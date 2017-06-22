@@ -85,7 +85,6 @@ function typeCheckExpression(expected: Type, e: TypedExpression) /*: TypedExpres
                         argValues[vi].type,
                         argTypeNames
                     );
-                    if (error) console.log(error)
                     if (error) break;
 
                     vi++;
