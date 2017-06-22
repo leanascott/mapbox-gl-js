@@ -59,7 +59,9 @@ module.exports = () => ({
     coalesce: function (...thunks) {
         while (true) {
             try {
-                return (thunks.shift())();
+                if (thunks.length === 0) return null;
+                const result = (thunks.shift())();
+                if (result !== null) return result;
             } catch (e) {
                 if (thunks.length === 0) throw e;
             }

@@ -58,7 +58,9 @@ function annotateValue(value, spec) {
         // Vector<Value>
         return ['json_array', value];
     } else {
-        return [spec.type, value];
+        const expectedTypeName = spec.type.slice(0, 1).toUpperCase() + spec.type.slice(1);
+        const checkType = ['==', expectedTypeName, ['typeof', value]];
+        return ['case', checkType, [spec.type, value], null];
     }
 }
 
